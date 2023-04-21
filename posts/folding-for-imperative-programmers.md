@@ -55,7 +55,7 @@ handled via a fold, which takes three arguments:
 In Haskell, this could be written as:
 
 ```haskell
-sum_of_ints :: [Int] -> Int
+sum_of_ints :: [Integer] -> Integer
 sum_of_ints lst = foldl (\acc num -> acc + num) 0 lst
 ```
 
@@ -79,22 +79,22 @@ to a list of `Employee`s?
 
 ```haskell
 data Employee = Employee { name :: String
-                       , salary :: Int }
+                       , salary :: Integer }
 
-sum_of_salaries :: [Employee] -> Int
+sum_of_salaries :: [Employee] -> Integer
 sum_of_salaries employees =
   -- Pattern matching to extract salary from Employee
   foldl (\acc Employee { name = _, salary = salary }
     -> acc + salary) 0 employees
 ```
 
-In this particular case, we are accumulating salaries (type `Int`), but the
+In this particular case, we are accumulating salaries (type `Integer`), but the
 elements of our container are type `Employee`. This allows for more flexibility,
 and allows us to do more productive things than just "sum over a list of
-`Int`s".
+`Integer`s".
 
-Remark 1: The astute may realize that `(\acc num -> acc + num)` is just applying
-`+` to two arguments, we could have rewritten the first function as:
+**Remark 1**: The astute may realize that `(\acc num -> acc + num)` is just
+applying `+` to two arguments, we could have rewritten the first function as:
 
 ```haskell
 sum_of_ints lst = foldl (+) 0 lst
