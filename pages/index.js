@@ -21,7 +21,7 @@ export default function Home({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>
+        <div>
           Hi, I'm <b>Kyle</b>, a third year CS major at UCLA. Welcome to my
           blog, where I post my half-baked ideas on whatever I'm interested in
           at the moment. Currently, that's:
@@ -32,7 +32,7 @@ export default function Home({ allPostsData }) {
             </li>
             <li>Software tooling (Neovim, NixOS)</li>
           </ul>
-        </p>
+        </div>
         <p>
           I'm always open to chat and meet new people; feel free to see what I'm
           up to on{" "}

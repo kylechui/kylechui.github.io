@@ -93,6 +93,8 @@ elements of our container are type `Employee`. This allows for more flexibility,
 and allows us to do more productive things than just "sum over a list of
 `Integer`s".
 
+---
+
 **Remark 1**: The astute may realize that `(\acc num -> acc + num)` is just
 applying `+` to two arguments, we could have rewritten the first function as:
 
@@ -106,3 +108,12 @@ reduction](https://en.wikipedia.org/wiki/Eta_reduction), yielding
 ```haskell
 sum_of_ints = foldl (+) 0
 ```
+
+**Remark 2**: The folding function used here is `foldl` and not just `fold`
+because Haskell has a _pair_ of folding functions, `foldl` and `foldr`. They
+traverse through a container left-to-right and right-to-left, respectively. Our
+choice of folding function matters when the accumulating function is
+order-dependent. In the case of summing a list of `Integer`s, it doesn't matter
+(since addition is associative/commutative), but if we changed the operation
+from addition to subtraction then `foldl` and `foldr` would yield different
+results.
