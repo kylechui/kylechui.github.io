@@ -101,7 +101,7 @@ sum_of_ints lst = foldl (+) 0 lst
 ```
 
 Furthermore, one can then apply an [eta
-reduction](https://en.wikipedia.org/wiki/Eta_reduction, yielding
+reduction](https://en.wikipedia.org/wiki/Eta_reduction), yielding
 
 ```haskell
 sum_of_ints = foldl (+) 0
