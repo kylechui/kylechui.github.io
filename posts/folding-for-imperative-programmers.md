@@ -8,7 +8,7 @@ date: "2023-04-20"
 > be abolished from all "higher-level" programming languages (i.e. everything
 > except, perhaps, plain machine code).
 
-> _Edsger Dijkstra,
+> _~ Edsger Dijkstra,
 > [Go To Statement Considered Harmful](https://web.archive.org/web/20230411182617/https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf)_
 
 In the 1960s, programmers often relied on `go to` statements when writing
@@ -52,7 +52,7 @@ handled via a fold, which takes three arguments:
   the container
 - The container to accumulate through
 
-In Haskell, this could be written as:
+In Haskell, we would use the `foldl`[^1] function and write:
 
 ```haskell
 sum_of_ints :: [Integer] -> Integer
@@ -61,9 +61,9 @@ sum_of_ints lst = foldl (\acc num -> acc + num) 0 lst
 
 Here you can see that the lambda takes in the accumulator as its first argument,
 and uses the current element of the list to "update" the accumulator to a new
-value, corresponding to `(2)` from the imperative code. The `0` that comes after
-the lambda is the initial value for our accumulator, corresponding to `(1)` in
-the imperative code.
+value[^2], corresponding to `(2)` from the imperative code. The `0` that comes
+after the lambda is the initial value for our accumulator, corresponding to
+`(1)` in the imperative code.
 
 If we look at the type signature of `foldl`, we get:
 
@@ -95,25 +95,27 @@ and allows us to do more productive things than just "sum over a list of
 
 ---
 
-**Remark 1**: The astute may realize that `(\acc num -> acc + num)` is just
-applying `+` to two arguments, we could have rewritten the first function as:
+[^1]:
+    The folding function used here is `foldl` and not just `fold` because
+    Haskell has a _pair_ of folding functions, `foldl` and `foldr`. They
+    traverse through a container left-to-right and right-to-left, respectively.
+    Our choice of folding function matters when the accumulating function is
+    order-dependent. In the case of summing a list of `Integer`s, it doesn't
+    matter (since addition is associative/commutative), but if we changed the
+    operation from addition to subtraction then `foldl` and `foldr` would yield
+    different results.
 
-```haskell
-sum_of_ints lst = foldl (+) 0 lst
-```
+[^2]:
+    The astute may realize that `(\acc num -> acc + num)` is just
+    applying `+` to two arguments, we could have rewritten the first function as:
 
-Furthermore, one can then apply an [eta
-reduction](https://en.wikipedia.org/wiki/Eta_reduction), yielding
+    ```haskell
+    sum_of_ints lst = foldl (+) 0 lst
+    ```
 
-```haskell
-sum_of_ints = foldl (+) 0
-```
+    Furthermore, one can then apply an [eta
+    reduction](https://en.wikipedia.org/wiki/Eta_reduction), yielding
 
-**Remark 2**: The folding function used here is `foldl` and not just `fold`
-because Haskell has a _pair_ of folding functions, `foldl` and `foldr`. They
-traverse through a container left-to-right and right-to-left, respectively. Our
-choice of folding function matters when the accumulating function is
-order-dependent. In the case of summing a list of `Integer`s, it doesn't matter
-(since addition is associative/commutative), but if we changed the operation
-from addition to subtraction then `foldl` and `foldr` would yield different
-results.
+    ```haskell
+    sum_of_ints = foldl (+) 0
+    ```
