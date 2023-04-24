@@ -115,14 +115,13 @@ code.
     (Python).
 
 [^2]:
-    The folding function used here is called `foldl` and not just `fold`
-    because Haskell has a _pair_ of folding functions, `foldl` and `foldr`. They
-    traverse through a container left-to-right and right-to-left, respectively.
-    Our choice of folding function matters when the accumulating function is
-    order-dependent. In the case of summing a list of `Integer`s, it doesn't
-    matter (since addition is associative/commutative). However, if we changed
-    the operation from addition to subtraction, then `foldl` and `foldr` would
-    yield different results.
+    The folding function we use here is called `foldl` and not just `fold`
+    because there are two kinds of folds: left-associative (`foldl`) and
+    right-associative (`foldr`). Hence if our operation is non-associative,
+    `foldl` and `foldr` yield different results. For example, if our operation
+    was subtraction instead of addition, our choice of folding function would
+    matter. See [the Haskell wiki](https://wiki.haskell.org/Foldr_Foldl_Foldl')
+    for more information.
 
 [^3]:
     The astute may realize that `(\acc num -> acc + num)` is just an
