@@ -1,5 +1,6 @@
 import Date from "../components/date";
 import Head from "next/head";
+import Image from "next/image";
 import Layout, { siteTitle } from "../components/layout";
 import Link from "next/link";
 import utilStyles from "../styles/utils.module.css";
@@ -46,8 +47,20 @@ export default function Home({
           I'm always open to chat and meet new people; feel free to see what I'm
           up to on{" "}
           <Link href="https://www.linkedin.com/in/kylechui">LinkedIn</Link> or{" "}
-          <Link href="https://www.github.com/kylechui">Github</Link>, or reach
-          out to me <Link href="mailto:kyle.chui@pm.me">via e-mail</Link>.
+          <Link href="https://www.github.com/kylechui">Github</Link>, or e-mail
+          me at{" "}
+          <Image
+            priority
+            src="/images/email.png"
+            height={32}
+            width={192}
+            alt=""
+            style={{
+              display: "inline-block",
+              verticalAlign: "-9px",
+            }}
+          />
+          .
         </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
