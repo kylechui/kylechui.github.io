@@ -36,7 +36,7 @@ C++, that might look like:
 int sum_of_ints(vector<int> nums) {
   int acc = 0;
   for (int num : nums) {
-    accumulator += num;
+    acc += num;
   }
   return acc;
 }
