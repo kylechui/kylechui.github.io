@@ -18,15 +18,14 @@ impossible to discern its control flow at a glance. Instead, one had to trace
 through all of the `go to` statements in order to figure out what possible
 states the program could be in.
 
-Dijkstra ([of Dijkstra
-fame](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)) recognized this,
-and argued that "the `go to` statement as it stands is just too primitive; it is
-too much an invitation to make a mess of one's program". I think that this
+Dijkstra
+([of Dijkstra fame](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm))
+recognized this, and argued that "the `go to` statement as it stands is just too
+primitive; it is too much an invitation to make a mess of one's program". This
 sentiment applies to loops as well, albeit to a lesser extent. In many
 instances, the actual details of _how_ iteration occurs aren't relevant to the
-problem at hand. While I don't think loops are going away anytime soon, many
-"simple" loops can be refactored using higher-level constructs from functional
-programming.
+problem at hand. While loops aren't going away anytime soon, many "simple" loops
+can be refactored using higher-level constructs from functional programming.
 
 Folding is an abstraction for the notion of "accumulating" a value in a
 container, i.e. summing the elements of a list. In an imperative language like
@@ -80,10 +79,11 @@ signature:
 foldl :: (b -> a -> b) -> b -> [a] -> b
 ```
 
-One might wonder why the lambda has type `b -> a -> b`, as opposed to `a -> a ->
-a`. This is for generality purposes, since _the type of the accumulator does not
-need to be the same as the type of the elements in the container_. For example,
-what if we wanted to find the total amount paid out to a list of `Employee`s?
+One might wonder why the lambda has type `b -> a -> b`, as opposed to
+`a -> a -> a`. This is for generality purposes, since _the type of the
+accumulator does not need to be the same as the type of the elements in the
+container_. For example, what if we wanted to find the total amount paid out to
+a list of `Employee`s?
 
 ```haskell
 -- Defines an Employee type to have a name and salary
@@ -111,8 +111,7 @@ code.
 ---
 
 [^1]:
-    In other languages, this may be called accumulate (C++) or reduce
-    (Python).
+    In other languages, this may be called accumulate (C++) or reduce (Python).
 
 [^2]:
     The folding function we use here is called `foldl` and not just `fold`
@@ -124,15 +123,15 @@ code.
     for more information.
 
 [^3]:
-    The astute may realize that `(\acc num -> acc + num)` is just an
-    application of `+` to two arguments, so we could rewrite `sum_of_ints` as:
+    The astute may realize that `(\acc num -> acc + num)` is just an application
+    of `+` to two arguments, so we could rewrite `sum_of_ints` as:
 
     ```haskell
     sum_of_ints lst = foldl (+) 0 lst
     ```
 
-    Furthermore, one can then apply an [eta
-    reduction](https://en.wikipedia.org/wiki/Eta_reduction), yielding
+    Furthermore, one can then apply an
+    [eta reduction](https://en.wikipedia.org/wiki/Eta_reduction), yielding
 
     ```haskell
     sum_of_ints = foldl (+) 0
