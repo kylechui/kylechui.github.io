@@ -28,7 +28,7 @@ problem at hand. While loops aren't going away anytime soon, many "simple" loops
 can be refactored using higher-level constructs from functional programming.
 
 Folding is an abstraction for the notion of "accumulating" a value in a
-container, i.e. summing the elements of a list. In an imperative language like
+container, e.g. summing the elements of a list. In an imperative language like
 C++, that might look like:
 
 ```cpp
