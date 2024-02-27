@@ -32,13 +32,13 @@ export default function Home({
       </Head>
       <section className={utilStyles.headingMd}>
         <div>
-          Hi, I'm <b>Kyle</b>, a third year CS major at UCLA. Welcome to my
-          blog, where I post my half-baked ideas on whatever I'm interested in
-          at the moment. Currently, that's:
+          Hi, I'm <b>Kyle</b>, a senior at UCLA studying Computer Science.
+          Welcome to my blog, where I post my half-baked ideas on whatever I'm
+          interested in at the moment. Currently, that's:
           <ul>
             <li>
-              Software correctness (Functional programming, type systems, formal
-              methods)
+              Software correctness (Functional programming, type systems, build
+              systems)
             </li>
             <li>Software tooling (Neovim, NixOS)</li>
           </ul>
