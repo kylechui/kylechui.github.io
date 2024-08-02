@@ -60,6 +60,8 @@ programs, avoiding a whole host of issues.
 ---
 
 [^1]:
-    This is also known as
-    [RAII](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization),
-    and is a common design pattern in languages like C/C++.
+    In languages with constructors/destructors like C++, this can be done by
+    binding an object's lifetime to a resource. In this case, creation of the
+    object would "claim" the `extmark`s, and it "releases" the `extmark`s once
+    it goes out of scope. This is also known as
+    [RAII](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization).
