@@ -95,13 +95,13 @@ override this behavior with
 custom script whenever a URL is clicked in an SSH session. In `kitty.conf`, we
 override the default click behavior to call a custom Python script:
 
-```conf
+```
 mouse_map ctrl+shift+left release grabbed,ungrabbed kitten override_click.py
 ```
 
 Then we create a custom click handler in `override_click.py`:
 
-```py
+```python
 import os
 from kitty.boss import Boss
 from kittens.tui.handler import result_handler
